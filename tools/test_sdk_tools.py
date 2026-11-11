@@ -193,3 +193,14 @@ def test_readme_gif_assets_allowed_but_disguised_binary_rejected(tmp_path):
     assert boundary.check(root)['status'] == 'passed'
     gif.write_bytes(b'\x7fELF' + bytes(20))
     assert boundary.check(root)['status'] == 'failed'
+
+
+def test_readme_png_logo_allowed_but_disguised_binary_rejected(tmp_path):
+    root = minimal_tree(tmp_path)
+    images = root / 'docs/images'
+    images.mkdir(parents=True)
+    logo = images / 'modi.png'
+    logo.write_bytes(b'\x89PNG\r\n\x1a\n' + bytes(20))
+    assert boundary.check(root)['status'] == 'passed'
+    logo.write_bytes(b'\x7fELF' + bytes(20))
+    assert boundary.check(root)['status'] == 'failed'

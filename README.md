@@ -1,14 +1,33 @@
-<div align="center">
+<p align="center">
+  <img src="docs/images/modi.png" alt="墨的智能 MODI" width="300">
+</p>
 
-# CoArm7 ROS 2
+<h1 align="center">CoArm7 ROS 2</h1>
 
-**基于 MoveIt 2 的 CoArm7 双臂与夹爪控制**
+<p align="center">
+  基于 MoveIt 2 的 CoArm7 双臂与夹爪控制
+</p>
 
-Ubuntu 22.04 · ROS 2 Humble · x86_64 / ARM64
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-v0.1.0-2f80ed" alt="Version v0.1.0">
+  <img src="https://img.shields.io/badge/Platform-Linux-fcc624?logo=linux&amp;logoColor=black" alt="Linux">
+  <img src="https://img.shields.io/badge/Arch-x86__64%20%7C%20ARM64-5c6bc0" alt="x86_64 and ARM64">
+  <img src="https://img.shields.io/badge/ROS%202-Humble-22314e?logo=ros" alt="ROS 2 Humble">
+  <img src="https://img.shields.io/badge/Planning-MoveIt%202-0082c9" alt="MoveIt 2">
+  <img src="https://img.shields.io/badge/CAN-SocketCAN-2e7d32" alt="SocketCAN">
+</p>
 
-[安装编译](docs/INSTALL.md) · [配置说明](docs/CONFIGURATION.md) · [真机运行](#hardware) · [RViz 操作](#rviz) · [远程 RViz（可选）](docs/REMOTE_RVIZ.md)
-
-</div>
+<p align="center">
+  <a href="docs/INSTALL.md"><strong>安装编译</strong></a>
+  ·
+  <a href="docs/CONFIGURATION.md"><strong>配置说明</strong></a>
+  ·
+  <a href="#hardware"><strong>真机运行</strong></a>
+  ·
+  <a href="#rviz"><strong>RViz 操作</strong></a>
+  ·
+  <a href="docs/REMOTE_RVIZ.md"><strong>远程 RViz（可选）</strong></a>
+</p>
 
 ---
 
@@ -49,13 +68,9 @@ ros2 run coarm7_bringup start_coarm7.py --mode hardware \
 
 ![拖动末端进行双臂规划与执行](docs/images/arms-plan-execute.gif)
 
-*演示已省略部分规划等待，保留原速操作与运动画面。*
-
 **修改关节角设置目标**
 
 ![修改关节角进行双臂规划与执行](docs/images/arms-joint-goal.gif)
-
-*演示已省略部分规划等待，并以 2 倍速播放。*
 
 ### 夹爪开合
 

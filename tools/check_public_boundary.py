@@ -45,12 +45,14 @@ def check(root):
             errors.append('Local machine configuration: ' + str(rel))
         if BINARY.search(file.name):
             errors.append('Binary dependency/build/capture artifact: ' + str(rel))
-        # README demo GIFs are published assets; reject disguised binaries.
-        if file.suffix.lower() == '.gif':
+        # README images are published assets; reject disguised binaries.
+        if file.suffix.lower() in {'.gif', '.png'}:
             with file.open('rb') as stream:
-                header = stream.read(6)
-            if rel.parts[:2] != ('docs', 'images') or header not in (b'GIF87a', b'GIF89a'):
-                errors.append('Invalid or misplaced demo GIF: ' + str(rel))
+                header = stream.read(8)
+            valid = (header[:6] in (b'GIF87a', b'GIF89a') if file.suffix.lower() == '.gif'
+                     else header == b'\x89PNG\r\n\x1a\n')
+            if rel.parts[:2] != ('docs', 'images') or not valid:
+                errors.append('Invalid or misplaced README image: ' + str(rel))
             continue
         # STL meshes are intentionally published robot assets, not SDK binaries.
         if file.suffix.lower() == '.stl':
