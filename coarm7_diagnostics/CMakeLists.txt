@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.16)
+project(coarm7_diagnostics)
+find_package(ament_cmake REQUIRED)
+install(PROGRAMS scripts/capture_usb.py scripts/usb_access.py scripts/gripper_trace.py scripts/usbmon_reader.py scripts/usbmon_statistics.py DESTINATION lib/${PROJECT_NAME})
+# Installation never grants privileges or enables timestamps. The helper is opt-in.
+install(PROGRAMS scripts/sync_timestamp_lease.py DESTINATION lib/${PROJECT_NAME} RENAME coarm7-sync-timestamp-lease)
+if(BUILD_TESTING)
+ find_package(ament_cmake_pytest REQUIRED)
+ ament_add_pytest_test(test_usb_capture test/test_usb_capture.py TIMEOUT 45)
+endif()
+ament_package()

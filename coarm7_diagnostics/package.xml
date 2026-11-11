@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="3">
+ <name>coarm7_diagnostics</name><version>0.1.0</version>
+ <description>Optional passive CoArm7 USB and ROS diagnostic tools.</description>
+ <maintainer email="1368405940@qq.com">樊成杰 (Fan Chengjie)</maintainer><license>Proprietary</license>
+ <buildtool_depend>ament_cmake</buildtool_depend>
+ <exec_depend>rclpy</exec_depend><exec_depend>control_msgs</exec_depend><exec_depend>action_msgs</exec_depend>
+ <exec_depend>sensor_msgs</exec_depend><exec_depend>python3-yaml</exec_depend>
+ <test_depend>ament_cmake_pytest</test_depend>
+ <export><build_type>ament_cmake</build_type></export>
+</package>

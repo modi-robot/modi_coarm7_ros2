@@ -1,0 +1,25 @@
+build/
+install/
+log/
+artifacts/
+__pycache__/
+.pytest_cache/
+*.pyc
+# SDK binaries are installed externally through the pinned package tool.
+deps/
+vendor/
+# Machine configuration, credentials and generated dependency/capture files.
+.env
+.env.*
+hardware_reviewed.yaml
+.coarm7-deps/
+*.so
+*.so.*
+*.a
+*.o
+*.zip
+*.deb
+*.pcap
+*.pcapng
+id_rsa
+id_ed25519

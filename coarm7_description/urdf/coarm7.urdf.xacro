@@ -1,0 +1,1489 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="coarm7">
+  <!-- Pedestal: modi_description/CoArm7. Base axes: X forward, Y toward the left arm, Z up. -->
+  <!-- Original pedestal coordinates are rotated -90 degrees about Z into this base frame. -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="8.7116E-07 4.6267E-07 0.28378" rpy="0 0 -1.5707963267948966" />
+      <mass value="9.9244" />
+      <inertia ixx="0.24494" ixy="6.3431E-08" ixz="5.3598E-11" iyy="0.27317" iyz="-1.2392E-10" izz="0.096423" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948966" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 -1.5707963267948966" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- L arm and EG2 4CX gripper: modi_description/modi_coarm7_eg2_4cx_l. -->
+  <joint name="L_mount_joint" type="fixed">
+    <!-- CoArm7 mounting rotation followed by -90 degrees about the arm's local Z axis. -->
+    <origin xyz="0 0.0989999999999357 0.81" rpy="-1.5707963267948966 0 0" />
+    <parent link="base_link" />
+    <child link="L_base_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="L_base_link">
+    <inertial>
+      <origin xyz="3.77968588879223E-08 0.000776134287547061 -1.04097066244702E-08" rpy="0 0 0" />
+      <mass value="0.73359212766148" />
+      <inertia ixx="0.000976406984547037" ixy="-4.8786749682457E-10" ixz="7.21032597986126E-10" iyy="0.00113225614180258" iyz="4.8043860591839E-11" izz="0.000935500809205801" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.309803921568627 0.309803921568627 0.309803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_Link1">
+    <inertial>
+      <origin xyz="0.000057 0.003955 0.107952" rpy="0 0 0" />
+      <mass value="1.122952" />
+      <inertia ixx="0.001253" ixy="-0.000001" ixz="-0.000002" iyy="0.001201" iyz="-0.000006" izz="0.001061" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint1" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="L_base_link" />
+    <child link="L_Link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.071779" upper="3.071779" effort="9.9" velocity="3.560472" />
+  </joint>
+  <link name="L_Link2">
+    <inertial>
+      <origin xyz="-0.000475 0.096763 -0.000314" rpy="0 0 0" />
+      <mass value="1.042649" />
+      <inertia ixx="0.002630" ixy="0.000020" ixz="0" iyy="0.001109" iyz="0.000039" izz="0.002195" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint2" type="revolute">
+    <origin xyz="0 0 0.116" rpy="1.5708 0 0" />
+    <parent link="L_Link1" />
+    <child link="L_Link2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.850049" upper="1.500983" effort="9.9" velocity="3.560472" />
+  </joint>
+  <link name="L_Link3">
+    <inertial>
+      <origin xyz="-0.001640 0.003233 0.248722" rpy="0 0 0" />
+      <mass value="1.126888" />
+      <inertia ixx="0.002615" ixy="0.000007" ixz="0.000055" iyy="0.002359" iyz="0.000094" izz="0.001089" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint3" type="revolute">
+    <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+    <parent link="L_Link2" />
+    <child link="L_Link3" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.071779" upper="3.071779" effort="12.3" velocity="3.560472" />
+  </joint>
+  <link name="L_Link4">
+    <inertial>
+      <origin xyz="-0.002316 0.092871 0.000671" rpy="0 0 0" />
+      <mass value="0.751419" />
+      <inertia ixx="0.002832" ixy="0.000068" ixz="0.000002" iyy="0.000838" iyz="-0.000048" izz="0.002433" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint4" type="revolute">
+    <origin xyz="0 0 0.27" rpy="1.5708 0 0" />
+    <parent link="L_Link3" />
+    <child link="L_Link4" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.216568" upper="0.977384" effort="12.3" velocity="3.560472" />
+  </joint>
+  <link name="L_Link5">
+    <inertial>
+      <origin xyz="-0.00471983 -0.00002432 0.20107031" rpy="0 0 0" />
+      <mass value="0.55153882" />
+      <inertia ixx="0.0004218" ixy="0" ixz="-0.000019" iyy="0.000459" iyz="0" izz="0.000390" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint5" type="revolute">
+    <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+    <parent link="L_Link4" />
+    <child link="L_Link5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.071779" upper="3.071779" effort="4.9" velocity="4.084070" />
+  </joint>
+  <link name="L_Link6">
+    <inertial>
+      <origin xyz="0.004498 0.058395 0.000054" rpy="0 0 0" />
+      <mass value="0.578328" />
+      <inertia ixx="0.000710" ixy="0.000029" ixz="0" iyy="0.000515" iyz="0.000001" izz="0.000616" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0.3 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint6" type="revolute">
+    <origin xyz="0 0 0.208" rpy="1.5708 0 0" />
+    <parent link="L_Link5" />
+    <child link="L_Link6" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.082104" upper="1.082104" effort="4.9" velocity="4.084070" />
+  </joint>
+  <link name="L_Link7">
+    <inertial>
+      <origin xyz="0.046209 0.000653 -0.001326" rpy="0 0 0" />
+      <mass value="0.283076" />
+      <inertia ixx="0.000340" ixy="0.000003" ixz="-0.000006" iyy="0.000385" iyz="0" izz="0.000289" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link7.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 1 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint7" type="revolute">
+    <origin xyz="0 0.069 0" rpy="1.5708 0 1.5708" />
+    <parent link="L_Link6" />
+    <child link="L_Link7" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.082104" upper="1.082104" effort="4.9" velocity="4.084070" />
+  </joint>
+  <link name="L_Link8">
+    <inertial>
+      <origin xyz="9.1827E-05 0.00017079 -0.013039" rpy="0 0 0" />
+      <mass value="0.22231" />
+      <inertia ixx="7.7864E-05" ixy="3.6098E-09" ixz="2.9757E-08" iyy="7.8324E-05" iyz="3.3305E-08" izz="0.0001385" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link8.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_Link8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_joint8" type="fixed">
+    <origin xyz="0.0755 0 0" rpy="0 1.5708 0" />
+    <parent link="L_Link7" />
+    <child link="L_Link8" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="L_4C2_mount_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 1.5707963267948966" />
+    <parent link="L_Link8" />
+    <child link="L_4C2_base_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="L_4C2_base_link">
+    <inertial>
+      <origin xyz="-0.000279914017370371 -0.00136388975709342 0.0454405321552947" rpy="0 0 0" />
+      <mass value="0.140444897200041" />
+      <inertia ixx="0.000134700526168137" ixy="5.43046128078362E-09" ixz="-1.75914264262357E-07" iyy="0.000112410442569018" iyz="7.03287300135695E-07" izz="4.3061639725763E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="L_4C2_l_1">
+    <inertial>
+      <origin xyz="0.0156215137398263 -0.0050417359599287 0.0124819426709754" rpy="0 0 0" />
+      <mass value="0.00617963289619017" />
+      <inertia ixx="4.07944812960879E-07" ixy="3.91735813509413E-07" ixz="-1.74313318642975E-09" iyy="1.49528388713135E-06" iyz="5.6256255993591E-10" izz="1.38354940092284E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_l_1_joint" type="revolute">
+    <origin xyz="0.0125 -0.04 0.079" rpy="0 -1.5707963267949 0" />
+    <parent link="L_4C2_base_link" />
+    <child link="L_4C2_l_1" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="L_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="L_4C2_l_3">
+    <inertial>
+      <origin xyz="0.0113944809406996 0.0119461150483645 0.00900000319369321" rpy="0 0 0" />
+      <mass value="0.0123384357863002" />
+      <inertia ixx="4.43017283172852E-07" ixy="-1.02950406000669E-07" ixz="1.99358964695598E-13" iyy="1.18456287524997E-06" iyz="8.23783433046901E-14" izz="1.12952426068206E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.4 0.4 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_l_3_joint" type="revolute">
+    <origin xyz="0.0399698636475022 -0.0129000000000021 0.0035" rpy="0 0 0" />
+    <parent link="L_4C2_l_1" />
+    <child link="L_4C2_l_3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="L_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="L_4C2_l_4">
+    <inertial>
+      <origin xyz="5.68989300120393E-16 3.31679128606766E-15 0.00899999999999999" rpy="0 0 0" />
+      <mass value="0.000148824783822917" />
+      <inertia ixx="4.10722561801027E-09" ixy="-3.79410540975098E-28" ixz="1.02579970234244E-27" iyy="4.10722561801027E-09" iyz="1.05790551675531E-26" izz="7.28677424320008E-11" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_l_4_joint" type="fixed">
+    <origin xyz="0.00199999999999997 0.00999999999999995 0" rpy="0 0 0" />
+    <parent link="L_4C2_l_3" />
+    <child link="L_4C2_l_4" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_ee_link_2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_ee_link_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="L_4C2_ee_link_2_joint" type="fixed">
+    <origin xyz="0.0284995000000011 0.0179009999999986 0.009" rpy="-1.5707963267949 0 0" />
+    <parent link="L_4C2_l_3" />
+    <child link="L_4C2_ee_link_2" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_r_1">
+    <inertial>
+      <origin xyz="0.0156215137398263 0.00504173595992871 0.0125180573290246" rpy="0 0 0" />
+      <mass value="0.00617963289619018" />
+      <inertia ixx="4.07944812960879E-07" ixy="-3.91735813509413E-07" ixz="1.74313318642964E-09" iyy="1.49528388713135E-06" iyz="5.62562559936376E-10" izz="1.38354940092284E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_r_1_joint" type="revolute">
+    <origin xyz="0.0125 0.04 0.079" rpy="0 -1.5707963267949 0" />
+    <parent link="L_4C2_base_link" />
+    <child link="L_4C2_r_1" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+  </joint>
+  <link name="L_4C2_r_3">
+    <inertial>
+      <origin xyz="0.0113944809406996 -0.0119461150483656 0.00899999680630532" rpy="0 0 0" />
+      <mass value="0.0123384357863002" />
+      <inertia ixx="4.43017283172853E-07" ixy="1.0295040600067E-07" ixz="-1.9935896331327E-13" iyy="1.18456287524997E-06" iyz="8.23783429014466E-14" izz="1.12952426068206E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.4 0.4 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_r_3_joint" type="revolute">
+    <origin xyz="0.0399698636475022 0.0129000000000021 0.0035" rpy="0 0 0" />
+    <parent link="L_4C2_r_1" />
+    <child link="L_4C2_r_3" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="L_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="L_4C2_r_4">
+    <inertial>
+      <origin xyz="0 -6.93889390390723E-18 0.00899999999999998" rpy="0 0 0" />
+      <mass value="0.000148824783822918" />
+      <inertia ixx="4.1072256180103E-09" ixy="1.65168540891555E-27" ixz="1.87947473616634E-27" iyy="4.1072256180103E-09" iyz="3.55089785786176E-28" izz="7.28677424320012E-11" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_r_4_joint" type="fixed">
+    <origin xyz="0.00200000000000099 -0.0100000000000021 0" rpy="0 0 0" />
+    <parent link="L_4C2_r_3" />
+    <child link="L_4C2_r_4" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_ee_link_3">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_ee_link_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="L_4C2_ee_link_3_joint" type="fixed">
+    <origin xyz="0.0284995000000011 -0.017901000000003 0.009" rpy="1.5707963267949 0 0" />
+    <parent link="L_4C2_r_3" />
+    <child link="L_4C2_ee_link_3" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_l_2_base">
+    <inertial>
+      <origin xyz="1.94289029309402E-16 -2.77555756156289E-17 0.0124577241215472" rpy="0 0 0" />
+      <mass value="0.000523674592701008" />
+      <inertia ixx="3.07347148157248E-08" ixy="2.19812746469661E-26" ixz="-1.59367038866359E-23" iyy="3.07347148157248E-08" iyz="-2.61747580820118E-24" izz="7.12500693959128E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_2_base.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_2_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_l_2_base_joint" type="fixed">
+    <origin xyz="0.0125 -0.03 0.081" rpy="0 -1.5707963267949 0" />
+    <parent link="L_4C2_base_link" />
+    <child link="L_4C2_l_2_base" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_l_2">
+    <inertial>
+      <origin xyz="0.0155770233442997 -0.0050273784123434 0.0125213762823325" rpy="0 0 0" />
+      <mass value="0.0099930556793867" />
+      <inertia ixx="4.94111099432183E-07" ixy="4.23227083308312E-07" ixz="1.48262486569207E-09" iyy="1.6688612137276E-06" iyz="-4.78536622703957E-10" izz="1.51481404273527E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_l_2_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="L_4C2_l_2_base" />
+    <child link="L_4C2_l_2" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="L_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="L_4C2_l_22">
+    <inertial>
+      <origin xyz="5.68989300120393E-16 3.31679128606766E-15 0.00163842870645384" rpy="0 0 0" />
+      <mass value="8.54177946949224E-05" />
+      <inertia ixx="2.59962892708364E-10" ixy="-3.92054482450108E-27" ixz="2.9153138645325E-25" iyy="2.59962892708364E-10" iyz="-9.17180896517267E-26" izz="3.91214878796927E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_22.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_l_22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_l_22_joint" type="fixed">
+    <origin xyz="0.0399698636475022 -0.0129000000000021 0.00349999999999996" rpy="0 0 0" />
+    <parent link="L_4C2_l_2" />
+    <child link="L_4C2_l_22" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_r_2_base">
+    <inertial>
+      <origin xyz="-1.38777878078145E-17 3.46944695195361E-18 0.0119577241215471" rpy="0 0 0" />
+      <mass value="0.000523674592701011" />
+      <inertia ixx="3.0734714815725E-08" ixy="-3.98073805558351E-27" ixz="3.14628716315684E-24" iyy="3.0734714815725E-08" iyz="-1.10686498667735E-23" izz="7.12500693959128E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_2_base.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_2_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_r_2_base_joint" type="fixed">
+    <origin xyz="0.012 0.0300000000000004 0.0809999999999998" rpy="0 -1.5707963267949 0" />
+    <parent link="L_4C2_base_link" />
+    <child link="L_4C2_r_2_base" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_r_2">
+    <inertial>
+      <origin xyz="0.0155770233442998 0.00502737841234303 0.0119786237176675" rpy="0 0 0" />
+      <mass value="0.00999305567938671" />
+      <inertia ixx="4.94111099432183E-07" ixy="-4.23227083308313E-07" ixz="-1.48262486568997E-09" iyy="1.6688612137276E-06" iyz="-4.7853662270353E-10" izz="1.51481404273527E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_r_2_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="L_4C2_r_2_base" />
+    <child link="L_4C2_r_2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="L_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="L_4C2_r_22">
+    <inertial>
+      <origin xyz="7.7715611723761E-16 5.05151476204446E-15 0.00173842870645385" rpy="0 0 0" />
+      <mass value="3.16362202573787E-05" />
+      <inertia ixx="9.62825528549496E-11" ixy="1.33910321952629E-26" ixz="-1.08152638299971E-25" iyy="9.62825528549496E-11" iyz="-4.00987167497571E-26" izz="1.44894399554417E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_22.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_r_22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="L_4C2_r_22_joint" type="fixed">
+    <origin xyz="0.0399698636475034 0.0128999999999996 0.00299999999999999" rpy="0 0 0" />
+    <parent link="L_4C2_r_2" />
+    <child link="L_4C2_r_22" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_ee_link_1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_ee_link_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="L_4C2_ee_link_1_joint" type="fixed">
+    <origin xyz="0 0 0.097001" rpy="0 0 0" />
+    <parent link="L_4C2_base_link" />
+    <child link="L_4C2_ee_link_1" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="L_4C2_ee_link_4">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/L_4C2_ee_link_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="L_4C2_ee_link_4_joint" type="fixed">
+    <origin xyz="0 0 0.147469863647503" rpy="0 0 0" />
+    <parent link="L_4C2_base_link" />
+    <child link="L_4C2_ee_link_4" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <!-- R arm and EG2 4CX gripper: modi_description/modi_coarm7_eg2_4cx_r. -->
+  <joint name="R_mount_joint" type="fixed">
+    <!-- CoArm7 mounting rotation followed by +90 degrees about the arm's local Z axis. -->
+    <origin xyz="0 -0.0990000000000644 0.81" rpy="1.5707963267948966 0 0" />
+    <parent link="base_link" />
+    <child link="R_base_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="R_base_link">
+    <inertial>
+      <origin xyz="-3.77968589037374E-08 -0.000776134287547054 -1.04097066383479E-08" rpy="0 0 0" />
+      <mass value="0.73359212766148" />
+      <inertia ixx="0.000976406984547038" ixy="-4.87867496823303E-10" ixz="-7.21032598009054E-10" iyy="0.00113225614180258" iyz="-4.80438606114316E-11" izz="0.000935500809205801" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.309803921568627 0.309803921568627 0.309803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_Link1">
+    <inertial>
+      <origin xyz="0.000057 0.003955 0.107952" rpy="0 0 0" />
+      <mass value="1.122952" />
+      <inertia ixx="0.001253" ixy="-0.000001" ixz="-0.000002" iyy="0.001201" iyz="-0.000006" izz="0.001061" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint1" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="R_base_link" />
+    <child link="R_Link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.071779" upper="3.071779" effort="9.9" velocity="3.560472" />
+  </joint>
+  <link name="R_Link2">
+    <inertial>
+      <origin xyz="-0.000475 0.096763 -0.000314" rpy="0 0 0" />
+      <mass value="1.042649" />
+      <inertia ixx="0.002630" ixy="0.000020" ixz="0" iyy="0.001109" iyz="0.000039" izz="0.002195" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint2" type="revolute">
+    <origin xyz="0 0 0.116" rpy="1.5708 0 0" />
+    <parent link="R_Link1" />
+    <child link="R_Link2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-1.500983" upper="1.850049" effort="9.9" velocity="3.560472" />
+  </joint>
+  <link name="R_Link3">
+    <inertial>
+      <origin xyz="-0.001640 0.003233 0.248722" rpy="0 0 0" />
+      <mass value="1.126888" />
+      <inertia ixx="0.002615" ixy="0.000007" ixz="0.000055" iyy="0.002359" iyz="0.000094" izz="0.001089" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint3" type="revolute">
+    <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+    <parent link="R_Link2" />
+    <child link="R_Link3" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.071779" upper="3.071779" effort="12.3" velocity="3.560472" />
+  </joint>
+  <link name="R_Link4">
+    <inertial>
+      <origin xyz="-0.002316 0.092871 0.000671" rpy="0 0 0" />
+      <mass value="0.751419" />
+      <inertia ixx="0.002832" ixy="0.000068" ixz="0.000002" iyy="0.000838" iyz="-0.000048" izz="0.002433" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint4" type="revolute">
+    <origin xyz="0 0 0.27" rpy="1.5708 0 0" />
+    <parent link="R_Link3" />
+    <child link="R_Link4" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.977384" upper="2.216568" effort="12.3" velocity="3.560472" />
+  </joint>
+  <link name="R_Link5">
+    <inertial>
+      <origin xyz="0.00471983 0.00002432 0.20107031" rpy="0 0 0" />
+      <mass value="0.55153882" />
+      <inertia ixx="0.0004218" ixy="0" ixz="0.000019" iyy="0.000459" iyz="0" izz="0.000390" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint5" type="revolute">
+    <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+    <parent link="R_Link4" />
+    <child link="R_Link5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.071779" upper="3.071779" effort="4.9" velocity="4.084070" />
+  </joint>
+  <link name="R_Link6">
+    <inertial>
+      <origin xyz="-0.004498 0.058395 -0.000054" rpy="0 0 0" />
+      <mass value="0.578328" />
+      <inertia ixx="0.000710" ixy="-0.000029" ixz="0" iyy="0.000515" iyz="-0.000001" izz="0.000616" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0.3 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint6" type="revolute">
+    <origin xyz="0 0 0.208" rpy="1.5708 0 0" />
+    <parent link="R_Link5" />
+    <child link="R_Link6" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-1.082104" upper="1.082104" effort="4.9" velocity="4.084070" />
+  </joint>
+  <link name="R_Link7">
+    <inertial>
+      <origin xyz="0.046209 0.000653 -0.001326" rpy="0 0 0" />
+      <mass value="0.283076" />
+      <inertia ixx="0.000340" ixy="0.000003" ixz="-0.000006" iyy="0.000385" iyz="0" izz="0.000289" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link7.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.3 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint7" type="revolute">
+    <origin xyz="0 0.069 0" rpy="-1.5708 0 1.5708" />
+    <parent link="R_Link6" />
+    <child link="R_Link7" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-1.082104" upper="1.082104" effort="4.9" velocity="4.084070" />
+  </joint>
+  <link name="R_Link8">
+    <inertial>
+      <origin xyz="-9.1827E-05 -0.00017079 -0.013039" rpy="0 0 0" />
+      <mass value="0.22231" />
+      <inertia ixx="7.7864E-05" ixy="3.6098E-09" ixz="-2.9757E-08" iyy="7.8324E-05" iyz="-3.3305E-08" izz="0.0001385" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link8.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.3 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_Link8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_joint8" type="fixed">
+    <origin xyz="0.0755 0 0" rpy="0 1.5708 0" />
+    <parent link="R_Link7" />
+    <child link="R_Link8" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="R_4C2_mount_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 1.5707963267948966" />
+    <parent link="R_Link8" />
+    <child link="R_4C2_base_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="R_4C2_base_link">
+    <inertial>
+      <origin xyz="-0.000279914017370371 -0.00136388975709342 0.0454405321552947" rpy="0 0 0" />
+      <mass value="0.140444897200041" />
+      <inertia ixx="0.000134700526168137" ixy="5.43046128078362E-09" ixz="-1.75914264262357E-07" iyy="0.000112410442569018" iyz="7.03287300135695E-07" izz="4.3061639725763E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="R_4C2_l_1">
+    <inertial>
+      <origin xyz="0.0156215137398263 -0.0050417359599287 0.0124819426709754" rpy="0 0 0" />
+      <mass value="0.00617963289619017" />
+      <inertia ixx="4.07944812960879E-07" ixy="3.91735813509413E-07" ixz="-1.74313318642975E-09" iyy="1.49528388713135E-06" iyz="5.6256255993591E-10" izz="1.38354940092284E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_l_1_joint" type="revolute">
+    <origin xyz="0.0125 -0.04 0.079" rpy="0 -1.5707963267949 0" />
+    <parent link="R_4C2_base_link" />
+    <child link="R_4C2_l_1" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="R_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="R_4C2_l_3">
+    <inertial>
+      <origin xyz="0.0113944809406996 0.0119461150483645 0.00900000319369321" rpy="0 0 0" />
+      <mass value="0.0123384357863002" />
+      <inertia ixx="4.43017283172852E-07" ixy="-1.02950406000669E-07" ixz="1.99358964695598E-13" iyy="1.18456287524997E-06" iyz="8.23783433046901E-14" izz="1.12952426068206E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.4 0.4 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_l_3_joint" type="revolute">
+    <origin xyz="0.0399698636475022 -0.0129000000000021 0.0035" rpy="0 0 0" />
+    <parent link="R_4C2_l_1" />
+    <child link="R_4C2_l_3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="R_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="R_4C2_l_4">
+    <inertial>
+      <origin xyz="5.68989300120393E-16 3.31679128606766E-15 0.00899999999999999" rpy="0 0 0" />
+      <mass value="0.000148824783822917" />
+      <inertia ixx="4.10722561801027E-09" ixy="-3.79410540975098E-28" ixz="1.02579970234244E-27" iyy="4.10722561801027E-09" iyz="1.05790551675531E-26" izz="7.28677424320008E-11" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_l_4_joint" type="fixed">
+    <origin xyz="0.00199999999999997 0.00999999999999995 0" rpy="0 0 0" />
+    <parent link="R_4C2_l_3" />
+    <child link="R_4C2_l_4" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_ee_link_2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_ee_link_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="R_4C2_ee_link_2_joint" type="fixed">
+    <origin xyz="0.0284995000000011 0.0179009999999986 0.009" rpy="-1.5707963267949 0 0" />
+    <parent link="R_4C2_l_3" />
+    <child link="R_4C2_ee_link_2" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_r_1">
+    <inertial>
+      <origin xyz="0.0156215137398263 0.00504173595992871 0.0125180573290246" rpy="0 0 0" />
+      <mass value="0.00617963289619018" />
+      <inertia ixx="4.07944812960879E-07" ixy="-3.91735813509413E-07" ixz="1.74313318642964E-09" iyy="1.49528388713135E-06" iyz="5.62562559936376E-10" izz="1.38354940092284E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_r_1_joint" type="revolute">
+    <origin xyz="0.0125 0.04 0.079" rpy="0 -1.5707963267949 0" />
+    <parent link="R_4C2_base_link" />
+    <child link="R_4C2_r_1" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+  </joint>
+  <link name="R_4C2_r_3">
+    <inertial>
+      <origin xyz="0.0113944809406996 -0.0119461150483656 0.00899999680630532" rpy="0 0 0" />
+      <mass value="0.0123384357863002" />
+      <inertia ixx="4.43017283172853E-07" ixy="1.0295040600067E-07" ixz="-1.9935896331327E-13" iyy="1.18456287524997E-06" iyz="8.23783429014466E-14" izz="1.12952426068206E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.4 0.4 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_r_3_joint" type="revolute">
+    <origin xyz="0.0399698636475022 0.0129000000000021 0.0035" rpy="0 0 0" />
+    <parent link="R_4C2_r_1" />
+    <child link="R_4C2_r_3" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="R_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="R_4C2_r_4">
+    <inertial>
+      <origin xyz="0 -6.93889390390723E-18 0.00899999999999998" rpy="0 0 0" />
+      <mass value="0.000148824783822918" />
+      <inertia ixx="4.1072256180103E-09" ixy="1.65168540891555E-27" ixz="1.87947473616634E-27" iyy="4.1072256180103E-09" iyz="3.55089785786176E-28" izz="7.28677424320012E-11" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_r_4_joint" type="fixed">
+    <origin xyz="0.00200000000000099 -0.0100000000000021 0" rpy="0 0 0" />
+    <parent link="R_4C2_r_3" />
+    <child link="R_4C2_r_4" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_ee_link_3">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_ee_link_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="R_4C2_ee_link_3_joint" type="fixed">
+    <origin xyz="0.0284995000000011 -0.017901000000003 0.009" rpy="1.5707963267949 0 0" />
+    <parent link="R_4C2_r_3" />
+    <child link="R_4C2_ee_link_3" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_l_2_base">
+    <inertial>
+      <origin xyz="1.94289029309402E-16 -2.77555756156289E-17 0.0124577241215472" rpy="0 0 0" />
+      <mass value="0.000523674592701008" />
+      <inertia ixx="3.07347148157248E-08" ixy="2.19812746469661E-26" ixz="-1.59367038866359E-23" iyy="3.07347148157248E-08" iyz="-2.61747580820118E-24" izz="7.12500693959128E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_2_base.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_2_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_l_2_base_joint" type="fixed">
+    <origin xyz="0.0125 -0.03 0.081" rpy="0 -1.5707963267949 0" />
+    <parent link="R_4C2_base_link" />
+    <child link="R_4C2_l_2_base" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_l_2">
+    <inertial>
+      <origin xyz="0.0155770233442997 -0.0050273784123434 0.0125213762823325" rpy="0 0 0" />
+      <mass value="0.0099930556793867" />
+      <inertia ixx="4.94111099432183E-07" ixy="4.23227083308312E-07" ixz="1.48262486569207E-09" iyy="1.6688612137276E-06" iyz="-4.78536622703957E-10" izz="1.51481404273527E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_l_2_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="R_4C2_l_2_base" />
+    <child link="R_4C2_l_2" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="R_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="R_4C2_l_22">
+    <inertial>
+      <origin xyz="5.68989300120393E-16 3.31679128606766E-15 0.00163842870645384" rpy="0 0 0" />
+      <mass value="8.54177946949224E-05" />
+      <inertia ixx="2.59962892708364E-10" ixy="-3.92054482450108E-27" ixz="2.9153138645325E-25" iyy="2.59962892708364E-10" iyz="-9.17180896517267E-26" izz="3.91214878796927E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_22.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_l_22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_l_22_joint" type="fixed">
+    <origin xyz="0.0399698636475022 -0.0129000000000021 0.00349999999999996" rpy="0 0 0" />
+    <parent link="R_4C2_l_2" />
+    <child link="R_4C2_l_22" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_r_2_base">
+    <inertial>
+      <origin xyz="-1.38777878078145E-17 3.46944695195361E-18 0.0119577241215471" rpy="0 0 0" />
+      <mass value="0.000523674592701011" />
+      <inertia ixx="3.0734714815725E-08" ixy="-3.98073805558351E-27" ixz="3.14628716315684E-24" iyy="3.0734714815725E-08" iyz="-1.10686498667735E-23" izz="7.12500693959128E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_2_base.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_2_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_r_2_base_joint" type="fixed">
+    <origin xyz="0.012 0.0300000000000004 0.0809999999999998" rpy="0 -1.5707963267949 0" />
+    <parent link="R_4C2_base_link" />
+    <child link="R_4C2_r_2_base" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_r_2">
+    <inertial>
+      <origin xyz="0.0155770233442998 0.00502737841234303 0.0119786237176675" rpy="0 0 0" />
+      <mass value="0.00999305567938671" />
+      <inertia ixx="4.94111099432183E-07" ixy="-4.23227083308313E-07" ixz="-1.48262486568997E-09" iyy="1.6688612137276E-06" iyz="-4.7853662270353E-10" izz="1.51481404273527E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_r_2_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="R_4C2_r_2_base" />
+    <child link="R_4C2_r_2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0.864" effort="1" velocity="2" />
+    <mimic joint="R_4C2_r_1_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="R_4C2_r_22">
+    <inertial>
+      <origin xyz="7.7715611723761E-16 5.05151476204446E-15 0.00173842870645385" rpy="0 0 0" />
+      <mass value="3.16362202573787E-05" />
+      <inertia ixx="9.62825528549496E-11" ixy="1.33910321952629E-26" ixz="-1.08152638299971E-25" iyy="9.62825528549496E-11" iyz="-4.00987167497571E-26" izz="1.44894399554417E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_22.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_r_22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R_4C2_r_22_joint" type="fixed">
+    <origin xyz="0.0399698636475034 0.0128999999999996 0.00299999999999999" rpy="0 0 0" />
+    <parent link="R_4C2_r_2" />
+    <child link="R_4C2_r_22" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_ee_link_1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_ee_link_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="R_4C2_ee_link_1_joint" type="fixed">
+    <origin xyz="0 0 0.097001" rpy="0 0 0" />
+    <parent link="R_4C2_base_link" />
+    <child link="R_4C2_ee_link_1" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="R_4C2_ee_link_4">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1e-4" />
+      <inertia ixx="1e-8" ixy="0" ixz="0" iyy="1e-8" iyz="0" izz="1e-8" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://coarm7_description/meshes/R_4C2_ee_link_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="R_4C2_ee_link_4_joint" type="fixed">
+    <origin xyz="0 0 0.147469863647503" rpy="0 0 0" />
+    <parent link="R_4C2_base_link" />
+    <child link="R_4C2_ee_link_4" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <!-- A massless fixed root preserves the physical pedestal inertia for KDL. -->
+  <link name="coarm7_root"/>
+  <joint name="coarm7_root_to_base" type="fixed">
+    <parent link="coarm7_root"/><child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <xacro:arg name="initial_positions_file" default="$(find coarm7_description)/config/initial_positions.yaml"/>
+  <xacro:include filename="$(find coarm7_description)/urdf/coarm7.ros2_control.xacro"/>
+  <xacro:arg name="backend" default="mock"/>
+  <xacro:arg name="effective_limits_file" default=""/>
+  <xacro:arg name="hardware_config_file" default=""/>
+  <xacro:arg name="gripper_joints" default="L_4C2_r_1_joint R_4C2_r_1_joint"/>
+  <xacro:coarm7_control_system initial_positions_file="$(arg initial_positions_file)" backend="$(arg backend)" config_file="$(arg hardware_config_file)" effective_limits_file="$(arg effective_limits_file)" gripper_joints="$(arg gripper_joints)"/>
+
+</robot>

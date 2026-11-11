@@ -1,0 +1,8 @@
+<library path="coarm7_group_planner">
+  <class name="coarm7_planning/GroupPlanner" type="coarm7_planning::GroupPlanner" base_class_type="planning_interface::PlannerManager">
+    <description>Automatic gripper PTP routing while preserving arm OMPL requests.</description>
+  </class>
+  <class name="coarm7_planning/GroupTiming" type="coarm7_planning::GroupTiming" base_class_type="planning_request_adapter::PlanningRequestAdapter">
+    <description>Keep generated PTP timing for grippers and delegate arm timing to the original TOTG adapter.</description>
+  </class>
+</library>

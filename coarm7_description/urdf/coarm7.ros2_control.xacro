@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="coarm7_control_system" params="initial_positions_file backend:='mock' config_file:='' effective_limits_file:='' gripper_joints:='L_4C2_r_1_joint R_4C2_r_1_joint'">
+    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
+    <ros2_control name="${dict(mock='CoArm7MockSystem', fake='CoArm7HardwareOffline', sdk='CoArm7Hardware')[backend]}" type="system">
+      <hardware>
+        <plugin>${dict(mock='mock_components/GenericSystem', fake='coarm7_hardware/CoArm7System', sdk='coarm7_hardware/CoArm7System')[backend]}</plugin>
+        <xacro:if value="${backend == 'mock'}"><param name="calculate_dynamics">true</param></xacro:if>
+        <xacro:unless value="${backend == 'mock'}"><param name="config_file">${config_file}</param></xacro:unless>
+        <xacro:if value="${backend != 'mock' and effective_limits_file != ''}"><param name="effective_limits_file">${effective_limits_file}</param></xacro:if>
+      </hardware>
+      <joint name="L_joint1">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_joint1']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_joint1' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_joint2">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_joint2']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_joint2' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_joint3">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_joint3']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_joint3' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_joint4">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_joint4']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_joint4' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_joint5">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_joint5']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_joint5' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_joint6">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_joint6']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_joint6' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_joint7">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_joint7']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_joint7' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_joint1">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_joint1']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_joint1' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_joint2">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_joint2']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_joint2' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_joint3">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_joint3']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_joint3' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_joint4">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_joint4']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_joint4' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_joint5">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_joint5']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_joint5' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_joint6">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_joint6']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_joint6' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_joint7">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_joint7']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_joint7' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_4C2_l_1_joint">
+        <param name="mimic">L_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_4C2_l_1_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_4C2_l_1_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_4C2_l_3_joint">
+        <param name="mimic">L_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_4C2_l_3_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_4C2_l_3_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_4C2_r_1_joint">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_4C2_r_1_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_4C2_r_1_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_4C2_r_3_joint">
+        <param name="mimic">L_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_4C2_r_3_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_4C2_r_3_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_4C2_l_2_joint">
+        <param name="mimic">L_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_4C2_l_2_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_4C2_l_2_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="L_4C2_r_2_joint">
+        <param name="mimic">L_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['L_4C2_r_2_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'L_4C2_r_2_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_4C2_l_1_joint">
+        <param name="mimic">R_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_4C2_l_1_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_4C2_l_1_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_4C2_l_3_joint">
+        <param name="mimic">R_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_4C2_l_3_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_4C2_l_3_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_4C2_r_1_joint">
+        <command_interface name="position"/>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_4C2_r_1_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_4C2_r_1_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_4C2_r_3_joint">
+        <param name="mimic">R_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_4C2_r_3_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_4C2_r_3_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_4C2_l_2_joint">
+        <param name="mimic">R_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_4C2_l_2_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_4C2_l_2_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+      <joint name="R_4C2_r_2_joint">
+        <param name="mimic">R_4C2_r_1_joint</param>
+        <param name="multiplier">1</param>
+        <state_interface name="position"><param name="initial_value">${initial_positions['R_4C2_r_2_joint']}</param></state_interface>
+        <state_interface name="velocity"/>
+        <xacro:if value="${backend != 'mock' and 'R_4C2_r_2_joint' in gripper_joints.split()}">
+          <command_interface name="goal_id"/><command_interface name="stop_id"/>
+          <state_interface name="feedback_stamp"/><state_interface name="stop_ack"/>
+        </xacro:if>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+</robot>

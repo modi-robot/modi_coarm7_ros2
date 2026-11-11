@@ -1,0 +1,5 @@
+<library path="coarm7_hardware">
+  <class name="coarm7_hardware/CoArm7System" type="coarm7_hardware::CoArm7System" base_class_type="hardware_interface::SystemInterface">
+    <description>14 CSP axes, two RS485 grippers, and model mimic feedback.</description>
+  </class>
+</library>

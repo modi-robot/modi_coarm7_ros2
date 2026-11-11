@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>coarm7_moveit_config</name><version>0.1.0</version>
+  <description>CoArm7 dual-arm and gripper MoveIt 2 planning configuration.</description>
+  <maintainer email="1368405940@qq.com">樊成杰 (Fan Chengjie)</maintainer><license>Proprietary</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>coarm7_description</depend>
+  <depend>moveit_ros_move_group</depend>
+  <depend>moveit_kinematics</depend>
+  <depend>moveit_planners_ompl</depend>
+  <exec_depend>coarm7_planning</exec_depend>
+  <depend>moveit_simple_controller_manager</depend>
+  <depend>moveit_ros_visualization</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

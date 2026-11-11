@@ -1,0 +1,115 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    left_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    right_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    left_gripper_controller:
+      type: position_controllers/GripperActionController
+    right_gripper_controller:
+      type: position_controllers/GripperActionController
+left_arm_controller:
+  ros__parameters:
+    joints:
+    - L_joint1
+    - L_joint2
+    - L_joint3
+    - L_joint4
+    - L_joint5
+    - L_joint6
+    - L_joint7
+    command_interfaces:
+    - position
+    state_interfaces:
+    - position
+    - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.02
+      goal_time: 2.0
+      L_joint1:
+        trajectory: 0.15
+        goal: 0.01
+      L_joint2:
+        trajectory: 0.15
+        goal: 0.01
+      L_joint3:
+        trajectory: 0.15
+        goal: 0.01
+      L_joint4:
+        trajectory: 0.15
+        goal: 0.01
+      L_joint5:
+        trajectory: 0.15
+        goal: 0.01
+      L_joint6:
+        trajectory: 0.15
+        goal: 0.01
+      L_joint7:
+        trajectory: 0.15
+        goal: 0.01
+right_arm_controller:
+  ros__parameters:
+    joints:
+    - R_joint1
+    - R_joint2
+    - R_joint3
+    - R_joint4
+    - R_joint5
+    - R_joint6
+    - R_joint7
+    command_interfaces:
+    - position
+    state_interfaces:
+    - position
+    - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.02
+      goal_time: 2.0
+      R_joint1:
+        trajectory: 0.15
+        goal: 0.01
+      R_joint2:
+        trajectory: 0.15
+        goal: 0.01
+      R_joint3:
+        trajectory: 0.15
+        goal: 0.01
+      R_joint4:
+        trajectory: 0.15
+        goal: 0.01
+      R_joint5:
+        trajectory: 0.15
+        goal: 0.01
+      R_joint6:
+        trajectory: 0.15
+        goal: 0.01
+      R_joint7:
+        trajectory: 0.15
+        goal: 0.01
+left_gripper_controller:
+  ros__parameters:
+    joint: L_4C2_r_1_joint
+    action_monitor_rate: 20.0
+    goal_tolerance: 0.01
+    max_effort: 0.0
+    allow_stalling: false
+    stall_velocity_threshold: 0.001
+    stall_timeout: 2.0
+right_gripper_controller:
+  ros__parameters:
+    joint: R_4C2_r_1_joint
+    action_monitor_rate: 20.0
+    goal_tolerance: 0.01
+    max_effort: 0.0
+    allow_stalling: false
+    stall_velocity_threshold: 0.001
+    stall_timeout: 2.0

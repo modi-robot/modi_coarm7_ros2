@@ -1,0 +1,246 @@
+# Standard CoArm7 dual-arm mapping; review the full template for each machine.
+# Normal deactivate disables the arms; faults request a quick stop.
+# Arm and gripper control are enabled by default; set gripper_read_only=true for arm-only control.
+# Feedback follows the existing system convention q=0.864*(1-raw/1000).
+# command_raw keeps the existing 1..100 percent position-command range.
+# max_cycle_ms is a ROS host deadline guard, not a firmware SYNC jitter threshold.
+transport: sdk
+commissioning_confirmed: false
+gripper_read_only: false
+deactivate_policy: disable
+device_report_file: ""  # Optional writable YAML path; snapshot is always logged at configure.
+buses:
+- can0
+- can1
+sdk_rx:
+  cpu: -1  # No fixed core; choose explicitly for the target machine.
+  priority: 90
+sdk_tx:
+  cpu: -1  # No fixed core; reviewed machine settings take precedence.
+  priority: 90
+  timestamp_diagnostics: false
+  lock_memory: true
+timing:
+  period_us: 5000
+  joint_timeout_ms: 50
+  gripper_timeout_ms: 500
+  gripper_poll_ms: 50
+  gripper_response_ms: 200
+  gripper_command_ms: 5
+  gripper_position_ms: 50  # Only opening targets are coalesced; SYNC and query timing are unchanged.
+  startup_timeout_ms: 1000
+  sdo_timeout_ms: 500
+  disable_settle_ms: 20
+  stop_wait_ms: 1000
+  stop_velocity_tolerance: 0.02  # Software criterion, rad/s; not a drive acknowledgement.
+  max_cycle_ms: 7.5
+  max_consecutive_overruns: 3
+axes:
+- name: L_joint1
+  bus: 0
+  id: 1
+  sign: 1
+  offset: 0
+  lower: -3.071779
+  upper: 3.071779
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: L_joint2
+  bus: 0
+  id: 2
+  sign: 1
+  offset: 0
+  lower: -1.850049
+  upper: 1.500983
+  initial: -0.5
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: L_joint3
+  bus: 0
+  id: 3
+  sign: 1
+  offset: 0
+  lower: -3.071779
+  upper: 3.071779
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: L_joint4
+  bus: 0
+  id: 4
+  sign: 1
+  offset: 0
+  lower: -2.216568
+  upper: 0.977384
+  initial: -1
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: L_joint5
+  bus: 0
+  id: 5
+  sign: 1
+  offset: 0
+  lower: -3.071779
+  upper: 3.071779
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: L_joint6
+  bus: 0
+  id: 6
+  sign: 1
+  offset: 0
+  lower: -1.082104
+  upper: 1.082104
+  initial: 0.4
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: L_joint7
+  bus: 0
+  id: 7
+  sign: 1
+  offset: 0
+  lower: -1.082104
+  upper: 1.082104
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: R_joint1
+  bus: 1
+  id: 8
+  sign: 1
+  offset: 0
+  lower: -3.071779
+  upper: 3.071779
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: R_joint2
+  bus: 1
+  id: 9
+  sign: 1
+  offset: 0
+  lower: -1.500983
+  upper: 1.850049
+  initial: 0.5
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: R_joint3
+  bus: 1
+  id: 10
+  sign: 1
+  offset: 0
+  lower: -3.071779
+  upper: 3.071779
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: R_joint4
+  bus: 1
+  id: 11
+  sign: 1
+  offset: 0
+  lower: -0.977384
+  upper: 2.216568
+  initial: 1
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: R_joint5
+  bus: 1
+  id: 12
+  sign: 1
+  offset: 0
+  lower: -3.071779
+  upper: 3.071779
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: R_joint6
+  bus: 1
+  id: 13
+  sign: 1
+  offset: 0
+  lower: -1.082104
+  upper: 1.082104
+  initial: -0.4
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+- name: R_joint7
+  bus: 1
+  id: 14
+  sign: 1
+  offset: 0
+  lower: -1.082104
+  upper: 1.082104
+  initial: 0
+  max_velocity: 0.5
+  max_acceleration: 2.0
+  following_error: 0.3
+grippers:
+- name: L_4C2_r_1_joint
+  bus: 0
+  tool_id: 40
+  device_id: 1
+  angle:
+  - 0.0
+  - 0.864
+  raw:
+  - 1000
+  - 0
+  command_raw: [10, 1000]
+  max_velocity: 0.8
+  speed_raw: 500  # Explicit EG2 speed (50%); acknowledged and read back before an opening write.
+  raw_endpoint_margin: 10
+- name: R_4C2_r_1_joint
+  bus: 1
+  tool_id: 41
+  device_id: 1
+  angle:
+  - 0.0
+  - 0.864
+  raw:
+  - 1000
+  - 0
+  command_raw: [10, 1000]
+  max_velocity: 0.8
+  speed_raw: 500
+  raw_endpoint_margin: 10
+
+# Optional supervisor settings. CLI arguments override these values.
+# These do not alter joint limits, SDK timing or gripper conversion.
+startup:
+  initialize_can: false
+  activate: true
+  start_controllers: true
+  control_cpu: -1
+  process_cpus: ""
+  rviz: true
+  remote_rviz: false
+  conflicting_processes: []
+  can:
+    bitrate: 1000000
+    data_bitrate: 5000000
+    restart_ms: 1000
+    tx_queue: 64
+diagnostics:
+  directory: ""  # Empty means diagnostics/ beside the reviewed config.
+  can_capture: false
+  usb_capture: false
+  usb_channels: [0, 1]  # Physical adapter channels corresponding to buses, in order.
+  usb_cpu: -1  # Auto-select from inherited affinity, avoiding configured SDK/control CPUs.
+  gripper_trace: false
+  diagnostics_required: false

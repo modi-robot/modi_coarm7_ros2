@@ -1,0 +1,24 @@
+{
+  "active_build_default": "public",
+  "public_provider": {
+    "repository": "https://github.com/modi-robot/modi_canevo_sdk",
+    "release": "v0.0.4",
+    "version": "0.0.4",
+    "source_commit": "1892fd1",
+    "cmake_package": "canevo_sdk_x86",
+    "cmake_target": "canevo_sdk_x86::canevo_sdk_x86",
+    "assets": {
+      "x86_64": {
+        "filename": "modi_canevo_sdk_0.0.4_linux_x86_64_1892fd1.zip",
+        "url": "https://github.com/modi-robot/modi_canevo_sdk/releases/download/v0.0.4/modi_canevo_sdk_0.0.4_linux_x86_64_1892fd1.zip",
+        "sha256": "c686ea500dcef5b8423b936f7f77f40c6d182ad61457d8135848264937cd4ab5"
+      },
+      "arm64": {
+        "filename": "modi_canevo_sdk_0.0.4_linux_arm64_1892fd1.zip",
+        "url": "https://github.com/modi-robot/modi_canevo_sdk/releases/download/v0.0.4/modi_canevo_sdk_0.0.4_linux_arm64_1892fd1.zip",
+        "sha256": "4d5a93ec7bd10c3490545ba43640ef074d9d1f7325cd509cae0316d0819711b1"
+      }
+    }
+  },
+  "development_extensions": "Optional external binary package canevo_sdk_extensions; no implementation snapshot included."
+}

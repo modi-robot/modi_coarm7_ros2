@@ -1,0 +1,5 @@
+<library path="coarm7_endpoint_gripper_controller">
+  <class name="coarm7_hardware/EndpointGripperController" type="coarm7_hardware::EndpointGripperController" base_class_type="controller_interface::ControllerInterface">
+    <description>EG2 endpoint GripperCommand with feedback-checked completion and explicit stop.</description>
+  </class>
+</library>

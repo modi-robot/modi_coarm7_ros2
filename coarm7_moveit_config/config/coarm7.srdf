@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="coarm7">
+  <virtual_joint name="world_fixed" type="fixed" parent_frame="world" child_link="coarm7_root" />
+  <group name="left_arm">
+    <chain base_link="L_base_link" tip_link="L_4C2_ee_link_4" />
+  </group>
+  <group name="right_arm">
+    <chain base_link="R_base_link" tip_link="R_4C2_ee_link_4" />
+  </group>
+  <group name="both_arms">
+    <group name="left_arm" />
+    <group name="right_arm" />
+  </group>
+  <group_state name="home" group="left_arm">
+    <joint name="L_joint1" value="0" />
+    <joint name="L_joint2" value="-0.5" />
+    <joint name="L_joint3" value="0" />
+    <joint name="L_joint4" value="-1" />
+    <joint name="L_joint5" value="0" />
+    <joint name="L_joint6" value="0.4" />
+    <joint name="L_joint7" value="0" />
+  </group_state>
+  <group_state name="home" group="right_arm">
+    <joint name="R_joint1" value="0" />
+    <joint name="R_joint2" value="0.5" />
+    <joint name="R_joint3" value="0" />
+    <joint name="R_joint4" value="1" />
+    <joint name="R_joint5" value="0" />
+    <joint name="R_joint6" value="-0.4" />
+    <joint name="R_joint7" value="0" />
+  </group_state>
+  <group_state name="home" group="both_arms">
+    <joint name="L_joint1" value="0" />
+    <joint name="L_joint2" value="-0.5" />
+    <joint name="L_joint3" value="0" />
+    <joint name="L_joint4" value="-1" />
+    <joint name="L_joint5" value="0" />
+    <joint name="L_joint6" value="0.4" />
+    <joint name="L_joint7" value="0" />
+    <joint name="R_joint1" value="0" />
+    <joint name="R_joint2" value="0.5" />
+    <joint name="R_joint3" value="0" />
+    <joint name="R_joint4" value="1" />
+    <joint name="R_joint5" value="0" />
+    <joint name="R_joint6" value="-0.4" />
+    <joint name="R_joint7" value="0" />
+  </group_state>
+  <group_state name="ready" group="left_arm">
+    <joint name="L_joint1" value="0.06" />
+    <joint name="L_joint2" value="-0.54" />
+    <joint name="L_joint3" value="0" />
+    <joint name="L_joint4" value="-1.05" />
+    <joint name="L_joint5" value="0" />
+    <joint name="L_joint6" value="0.4" />
+    <joint name="L_joint7" value="0" />
+  </group_state>
+  <group_state name="ready" group="right_arm">
+    <joint name="R_joint1" value="-0.06" />
+    <joint name="R_joint2" value="0.54" />
+    <joint name="R_joint3" value="0" />
+    <joint name="R_joint4" value="1.05" />
+    <joint name="R_joint5" value="0" />
+    <joint name="R_joint6" value="-0.4" />
+    <joint name="R_joint7" value="0" />
+  </group_state>
+  <group_state name="ready" group="both_arms">
+    <joint name="L_joint1" value="0.06" />
+    <joint name="L_joint2" value="-0.54" />
+    <joint name="L_joint3" value="0" />
+    <joint name="L_joint4" value="-1.05" />
+    <joint name="L_joint5" value="0" />
+    <joint name="L_joint6" value="0.4" />
+    <joint name="L_joint7" value="0" />
+    <joint name="R_joint1" value="-0.06" />
+    <joint name="R_joint2" value="0.54" />
+    <joint name="R_joint3" value="0" />
+    <joint name="R_joint4" value="1.05" />
+    <joint name="R_joint5" value="0" />
+    <joint name="R_joint6" value="-0.4" />
+    <joint name="R_joint7" value="0" />
+  </group_state>
+  <disable_collisions link1="base_link" link2="L_base_link" reason="Adjacent" />
+  <disable_collisions link1="L_base_link" link2="L_Link1" reason="Adjacent" />
+  <disable_collisions link1="L_Link1" link2="L_Link2" reason="Adjacent" />
+  <disable_collisions link1="L_Link2" link2="L_Link3" reason="Adjacent" />
+  <disable_collisions link1="L_Link3" link2="L_Link4" reason="Adjacent" />
+  <disable_collisions link1="L_Link4" link2="L_Link5" reason="Adjacent" />
+  <disable_collisions link1="L_Link5" link2="L_Link6" reason="Adjacent" />
+  <disable_collisions link1="L_Link6" link2="L_Link7" reason="Adjacent" />
+  <disable_collisions link1="L_Link7" link2="L_Link8" reason="Adjacent" />
+  <disable_collisions link1="base_link" link2="R_base_link" reason="Adjacent" />
+  <disable_collisions link1="R_base_link" link2="R_Link1" reason="Adjacent" />
+  <disable_collisions link1="R_Link1" link2="R_Link2" reason="Adjacent" />
+  <disable_collisions link1="R_Link2" link2="R_Link3" reason="Adjacent" />
+  <disable_collisions link1="R_Link3" link2="R_Link4" reason="Adjacent" />
+  <disable_collisions link1="R_Link4" link2="R_Link5" reason="Adjacent" />
+  <disable_collisions link1="R_Link5" link2="R_Link6" reason="Adjacent" />
+  <disable_collisions link1="R_Link6" link2="R_Link7" reason="Adjacent" />
+  <disable_collisions link1="R_Link7" link2="R_Link8" reason="Adjacent" />
+  <group name="left_gripper">
+    <link name="L_4C2_base_link" />
+    <link name="L_4C2_l_1" />
+    <link name="L_4C2_l_3" />
+    <link name="L_4C2_l_4" />
+    <link name="L_4C2_ee_link_2" />
+    <link name="L_4C2_r_1" />
+    <link name="L_4C2_r_3" />
+    <link name="L_4C2_r_4" />
+    <link name="L_4C2_ee_link_3" />
+    <link name="L_4C2_l_2_base" />
+    <link name="L_4C2_l_2" />
+    <link name="L_4C2_l_22" />
+    <link name="L_4C2_r_2_base" />
+    <link name="L_4C2_r_2" />
+    <link name="L_4C2_r_22" />
+    <link name="L_4C2_ee_link_1" />
+    <link name="L_4C2_ee_link_4" />
+  </group>
+  <end_effector name="left_gripper" parent_link="L_4C2_base_link" group="left_gripper" parent_group="left_arm" />
+  <group_state name="open" group="left_gripper">
+    <joint name="L_4C2_r_1_joint" value="0.0" />
+  </group_state>
+  <group_state name="closed" group="left_gripper">
+    <joint name="L_4C2_r_1_joint" value="0.85536" />
+  </group_state>
+  <group name="right_gripper">
+    <link name="R_4C2_base_link" />
+    <link name="R_4C2_l_1" />
+    <link name="R_4C2_l_3" />
+    <link name="R_4C2_l_4" />
+    <link name="R_4C2_ee_link_2" />
+    <link name="R_4C2_r_1" />
+    <link name="R_4C2_r_3" />
+    <link name="R_4C2_r_4" />
+    <link name="R_4C2_ee_link_3" />
+    <link name="R_4C2_l_2_base" />
+    <link name="R_4C2_l_2" />
+    <link name="R_4C2_l_22" />
+    <link name="R_4C2_r_2_base" />
+    <link name="R_4C2_r_2" />
+    <link name="R_4C2_r_22" />
+    <link name="R_4C2_ee_link_1" />
+    <link name="R_4C2_ee_link_4" />
+  </group>
+  <end_effector name="right_gripper" parent_link="R_4C2_base_link" group="right_gripper" parent_group="right_arm" />
+  <group_state name="open" group="right_gripper">
+    <joint name="R_4C2_r_1_joint" value="0.0" />
+  </group_state>
+  <group_state name="closed" group="right_gripper">
+    <joint name="R_4C2_r_1_joint" value="0.85536" />
+  </group_state>
+  <group name="both_grippers">
+    <group name="left_gripper" />
+    <group name="right_gripper" />
+  </group>
+  <group_state name="open" group="both_grippers">
+    <joint name="L_4C2_r_1_joint" value="0.0" />
+    <joint name="R_4C2_r_1_joint" value="0.0" />
+  </group_state>
+  <group_state name="closed" group="both_grippers">
+    <joint name="L_4C2_r_1_joint" value="0.85536" />
+    <joint name="R_4C2_r_1_joint" value="0.85536" />
+  </group_state>
+  <disable_collisions link1="L_Link8" link2="L_4C2_base_link" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_base_link" link2="L_4C2_l_1" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_l_1" link2="L_4C2_l_3" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_l_3" link2="L_4C2_l_4" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_l_3" link2="L_4C2_ee_link_2" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_base_link" link2="L_4C2_r_1" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_r_1" link2="L_4C2_r_3" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_r_3" link2="L_4C2_r_4" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_r_3" link2="L_4C2_ee_link_3" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_base_link" link2="L_4C2_l_2_base" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_l_2_base" link2="L_4C2_l_2" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_l_2" link2="L_4C2_l_22" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_base_link" link2="L_4C2_r_2_base" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_r_2_base" link2="L_4C2_r_2" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_r_2" link2="L_4C2_r_22" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_base_link" link2="L_4C2_ee_link_1" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_base_link" link2="L_4C2_ee_link_4" reason="Adjacent" />
+  <disable_collisions link1="R_Link8" link2="R_4C2_base_link" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_base_link" link2="R_4C2_l_1" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_l_1" link2="R_4C2_l_3" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_l_3" link2="R_4C2_l_4" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_l_3" link2="R_4C2_ee_link_2" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_base_link" link2="R_4C2_r_1" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_r_1" link2="R_4C2_r_3" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_r_3" link2="R_4C2_r_4" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_r_3" link2="R_4C2_ee_link_3" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_base_link" link2="R_4C2_l_2_base" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_l_2_base" link2="R_4C2_l_2" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_l_2" link2="R_4C2_l_22" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_base_link" link2="R_4C2_r_2_base" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_r_2_base" link2="R_4C2_r_2" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_r_2" link2="R_4C2_r_22" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_base_link" link2="R_4C2_ee_link_1" reason="Adjacent" />
+  <disable_collisions link1="R_4C2_base_link" link2="R_4C2_ee_link_4" reason="Adjacent" />
+  <disable_collisions link1="L_4C2_l_22" link2="L_4C2_l_4" reason="FourBarPinContact" />
+  <disable_collisions link1="L_4C2_r_22" link2="L_4C2_r_4" reason="FourBarPinContact" />
+  <disable_collisions link1="L_4C2_r_22" link2="L_4C2_r_3" reason="FourBarPinContact" />
+  <disable_collisions link1="R_4C2_l_22" link2="R_4C2_l_4" reason="FourBarPinContact" />
+  <disable_collisions link1="R_4C2_r_22" link2="R_4C2_r_4" reason="FourBarPinContact" />
+  <disable_collisions link1="R_4C2_r_22" link2="R_4C2_r_3" reason="FourBarPinContact" />
+</robot>
